@@ -45,22 +45,25 @@ export default function App({ city }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const getTimings = async () => {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
+    const fetchTimings = async () => {
+      try {
+        const { coords } = await new Promise((resolve, reject) =>
+          navigator.geolocation.getCurrentPosition(resolve, reject)
+        );
+        const { latitude, longitude } = coords;
+        const date = new Date();
         const response = await fetch(
-          `${API_BASE_URL}/timings/${year}-${month}-${day}?latitude=${latitude}&longitude=${longitude}&method=${calculationMethod}`
+          `${API_BASE_URL}/timings/${
+            date.toISOString().split('T')[0]
+          }?latitude=${latitude}&longitude=${longitude}&method=${calculationMethod}`
         );
         const data = await response.json();
         setTimeRegion(data.data.meta.timezone);
-        console.log(data);
-      });
+      } catch (error) {
+        console.error('Error fetching timings:', error);
+      }
     };
-    getTimings();
+    fetchTimings();
   }, []);
   useEffect(() => {
     setCurrentTime(new Date());
@@ -87,21 +90,19 @@ export default function App({ city }) {
   const fetchPrayerTimes = async () => {
     setIsLoading(true);
     try {
-      const date = new Date();
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
+      const date = new Date().toISOString().split('T')[0];
+      const cityLabel =
+        timeRegions.find((r) => r.value === timeRegion)?.label || '';
       const response = await fetch(
-        `${API_BASE_URL}/timingsByCity/${year}-${month}-${day}?city=${
-          timeRegions.find((r) => r.value === timeRegion)?.label
-        }&country=&method=${calculationMethod}`
+        `${API_BASE_URL}/timingsByCity/${date}?city=${cityLabel}&country=&method=${calculationMethod}`
       );
-      const data = await response.json();
-      setPrayerTimes(data.data.timings);
+      const { data } = await response.json();
+      setPrayerTimes(data.timings);
     } catch (error) {
       console.error('Error fetching prayer times:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const updateNextPrayer = () => {
@@ -111,18 +112,18 @@ export default function App({ city }) {
     let nextPrayerName = null;
     let minDiff = Infinity;
 
-    for (const prayer of prayerNames) {
+    prayerNames.forEach((prayer) => {
       const prayerTime = new Date(
-        now.toDateString() + ' ' + prayerTimes[prayer]
+        `${now.toDateString()} ${prayerTimes[prayer]}`
       );
       if (prayerTime > now) {
-        const diff = prayerTime.getTime() - now.getTime();
+        const diff = prayerTime - now;
         if (diff < minDiff) {
           minDiff = diff;
           nextPrayerName = prayer;
         }
       }
-    }
+    });
 
     if (!nextPrayerName) {
       nextPrayerName = prayerNames[0];
@@ -130,20 +131,24 @@ export default function App({ city }) {
       tomorrowDate.setDate(tomorrowDate.getDate() + 1);
       minDiff =
         new Date(
-          tomorrowDate.toDateString() + ' ' + prayerTimes[nextPrayerName]
-        ).getTime() - now.getTime();
+          `${tomorrowDate.toDateString()} ${prayerTimes[nextPrayerName]}`
+        ) - now;
     }
 
     setNextPrayer(nextPrayerName);
 
-    const hours = Math.floor(minDiff / (1000 * 60 * 60));
-    const minutes = Math.floor((minDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((minDiff % (1000 * 60)) / 1000);
-    setCountdown(
-      `${hours.toString().padStart(2, '0')}:${minutes
-        .toString()
-        .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+    const hours = String(Math.floor(minDiff / (1000 * 60 * 60))).padStart(
+      2,
+      '0'
     );
+    const minutes = String(
+      Math.floor((minDiff % (1000 * 60 * 60)) / (1000 * 60))
+    ).padStart(2, '0');
+    const seconds = String(Math.floor((minDiff % (1000 * 60)) / 1000)).padStart(
+      2,
+      '0'
+    );
+    setCountdown(`${hours}:${minutes}:${seconds}`);
   };
 
   return (

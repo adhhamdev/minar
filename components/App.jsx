@@ -28,37 +28,13 @@ export const timeRegions = [
   { value: 'Asia/Tokyo', label: 'Tokyo' },
   { value: 'Australia/Sydney', label: 'Sydney' },
   { value: 'America/Los_Angeles', label: 'Los Angeles' },
-  { value: 'America/Toronto', label: 'Toronto' },
-  { value: 'America/Chicago', label: 'Chicago' },
-  { value: 'America/Mexico_City', label: 'Mexico City' },
-  { value: 'America/Sao_Paulo', label: 'Sao Paulo' },
   { value: 'Asia/Kolkata', label: 'Mumbai' },
   { value: 'Asia/Shanghai', label: 'Shanghai' },
   { value: 'Asia/Singapore', label: 'Singapore' },
-  { value: 'Asia/Kuala_Lumpur', label: 'Kuala Lumpur' },
-  { value: 'Asia/Jakarta', label: 'Jakarta' },
-  { value: 'Asia/Manila', label: 'Manila' },
-  { value: 'Asia/Seoul', label: 'Seoul' },
-  { value: 'Asia/Taipei', label: 'Taipei' },
-  { value: 'Asia/Bangkok', label: 'Bangkok' },
-  { value: 'Asia/Hong_Kong', label: 'Hong Kong' },
-  { value: 'Asia/Riyadh', label: 'Riyadh' },
-  { value: 'Asia/Kuwait', label: 'Kuwait' },
-  { value: 'Asia/Doha', label: 'Doha' },
-  { value: 'Asia/Beirut', label: 'Beirut' },
-  { value: 'Africa/Cairo', label: 'Cairo' },
-  { value: 'Africa/Johannesburg', label: 'Johannesburg' },
-  { value: 'Europe/Paris', label: 'Paris' },
-  { value: 'Europe/Berlin', label: 'Berlin' },
-  { value: 'Europe/Madrid', label: 'Madrid' },
-  { value: 'Europe/Rome', label: 'Rome' },
-  { value: 'Europe/Istanbul', label: 'Istanbul' },
-  { value: 'Europe/Moscow', label: 'Moscow' },
-  { value: 'Europe/Amsterdam', label: 'Amsterdam' },
-  { value: 'Europe/Stockholm', label: 'Stockholm' },
+  { value: 'Asia/Colombo', label: 'Colombo' },
 ];
 
-export default function Main() {
+export default function App({ city }) {
   const [currentTime, setCurrentTime] = useState(null);
   const [prayerTimes, setPrayerTimes] = useState(null);
   const [nextPrayer, setNextPrayer] = useState(null);
@@ -68,6 +44,24 @@ export default function Main() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const getTimings = async () => {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        const response = await fetch(
+          `${API_BASE_URL}/timings/${year}-${month}-${day}?latitude=${latitude}&longitude=${longitude}&method=${calculationMethod}`
+        );
+        const data = await response.json();
+        setTimeRegion(data.data.meta.timezone);
+        console.log(data);
+      });
+    };
+    getTimings();
+  }, []);
   useEffect(() => {
     setCurrentTime(new Date());
 

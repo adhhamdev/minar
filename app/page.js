@@ -1,5 +1,5 @@
-import Main from '@/components/Main';
+import App from '@/components/App';
 
 export default function Page() {
-  return <Main />;
+  return <App />;
 }

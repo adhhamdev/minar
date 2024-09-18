@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { CloudMoon, CloudSun, Sun, Sunrise, Sunset } from 'lucide-react';
-import { prayerNames } from './Main';
+import { prayerNames } from './App';
 
 const prayerIcons = {
   Fajr: <Sunrise className='w-6 h-6' />,

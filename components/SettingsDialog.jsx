@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { timeRegions } from './Main';
+import { timeRegions } from './App';
 
 export default function SettingsDialog({
   isOpen,

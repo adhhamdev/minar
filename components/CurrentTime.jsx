@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
-import { timeRegions } from './Main';
+import { timeRegions } from './App';
 
 export default function CurrentTime({ currentTime, timeRegion }) {
   return (

@@ -14,7 +14,7 @@ const prayerIcons = {
 export default function PrayerTable({ prayerTimes, isLoading }) {
   return (
     <motion.div
-      className='overflow-x-auto'
+      className='overflow-x-auto rounded-lg'
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.4 }}>

@@ -8,7 +8,7 @@ export default function NextPrayer({
 }) {
   return (
     <motion.div
-      className='p-4 mb-6 rounded-lg bg-emerald-50'
+      className='p-4 mb-6 rounded-lg shadow-inner bg-emerald-50'
       initial={{ x: -50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}>

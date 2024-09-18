@@ -7,9 +7,25 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+export const viewport = {
+  themeColor: '#365314',
+  colorScheme: '#365314'
+}
+
 export const metadata = {
   title: 'Minar',
   description: 'Global Islamic Clock',
+  generator: 'Next.js',
+  applicationName: 'Minar',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Minar', 'Islam', 'Muslim', 'Islam App', 'Muslim App', 'Azan', 'Prayer Times', 'Minar Clock'],
+  authors: [{ name: 'Adhham Safwan', url: 'https://adhham.vercel.app' }],
+  creator: 'Adhham Safwan',
+  publisher: 'Adhham Safwan',
+  formatDetection: {
+    email: false,
+    telephone: false,
+  },
 };
 
 export default function RootLayout({ children }) {

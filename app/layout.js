@@ -8,8 +8,8 @@ const poppins = Poppins({
 });
 
 export const viewport = {
-  themeColor: '#365314',
-  colorScheme: '#365314'
+  themeColor: '#F0FDF4',
+  colorScheme: '#F0FDF4'
 }
 
 export const metadata = {

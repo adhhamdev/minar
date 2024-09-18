@@ -150,7 +150,7 @@ export default function Component() {
   };
 
   return (
-    <div className='min-h-screen bg-[#f0e6d2]'>
+    <div className='min-h-screen bg-slate-50'>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZTZlNiIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZTZlNiIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==')] opacity-10"></div>
       <div className='relative z-10 flex flex-col items-center justify-center min-h-screen p-4'>
         <motion.div
@@ -243,7 +243,7 @@ export default function Component() {
                 </div>
                 <DialogFooter>
                   <Button type='submit' onClick={handleSaveSettings}>
-                    Save changes
+                    Apply
                   </Button>
                 </DialogFooter>
               </DialogContent>

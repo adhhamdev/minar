@@ -1,0 +1,30 @@
+{
+  "background_color": "#ffffff",
+  "description": "Global Islamic Clock",
+  "dir": "ltr",
+  "display": "fullscreen",
+  "name": "Minar",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Minar",
+  "start_url": "/",
+  "theme_color": "#F0FDF4",
+  "icons": [
+    {
+      "src": "/icon.png?807a888b6df571de",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "/apple-icon.png?807a888b6df571de",
+      "type": "image/png",
+      "sizes": "24x24"
+    }
+  ],
+  "lang": "en",
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "window-controls-overlay"
+  ]
+}

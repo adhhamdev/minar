@@ -1,12 +1,5 @@
-// service-worker.js
-
-const CACHE_NAME = 'nextjs-cache-v1';
-const urlsToCache = [
-  '/',
-  '/_next/static/', // Next.js static files
-  '/images/',
-  '/api/', // API routes
-];
+const CACHE_NAME = 'cache-v1';
+const urlsToCache = ['/'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

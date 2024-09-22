@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "background_color": "#ffffff",
   "description": "Global Islamic Clock",
   "dir": "ltr",
@@ -11,20 +12,31 @@
   "theme_color": "#F0FDF4",
   "icons": [
     {
-      "src": "/icon.png?807a888b6df571de",
+      "src": "/icon.png",
       "type": "image/png",
-      "sizes": "24x24"
+      "sizes": "256x256",
+      "purpose": "any"
     },
     {
-      "src": "/apple-icon.png?807a888b6df571de",
+      "src": "/icon.png",
       "type": "image/png",
-      "sizes": "24x24"
+      "sizes": "256x256",
+      "purpose": "monochrome"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/minar.png",
+      "sizes": "620x872",
+      "type": "image/png"
+    },
+    {
+      "src": "/minar-wide.png",
+      "sizes": "1901x911",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "lang": "en",
-  "display_override": [
-    "fullscreen",
-    "standalone",
-    "window-controls-overlay"
-  ]
+  "display_override": ["fullscreen", "standalone", "window-controls-overlay"]
 }

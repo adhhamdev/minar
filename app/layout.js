@@ -36,6 +36,9 @@ export const metadata = {
     email: false,
     telephone: false,
   },
+  other: {
+    "google-site-verification": "0R28Xy-oyNhcE2_MB10Jrkoayy5JcPf7mkx89IIMySk"
+  }
 };
 
 export default function RootLayout({ children }) {

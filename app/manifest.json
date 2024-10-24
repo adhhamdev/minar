@@ -4,7 +4,7 @@
   "description": "Global Islamic Clock",
   "dir": "ltr",
   "display": "fullscreen",
-  "name": "Minar",
+  "name": "Minar - Islamic Prayer Times",
   "orientation": "any",
   "scope": "/",
   "short_name": "Minar",

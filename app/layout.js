@@ -14,28 +14,16 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'Minar',
+  title: 'Minar - Islamic Prayer Times',
   description: 'Global Islamic Clock',
   generator: 'Next.js',
   applicationName: 'Minar',
   referrer: 'origin-when-cross-origin',
-  keywords: [
-    'Minar',
-    'Islam',
-    'Muslim',
-    'Islam App',
-    'Muslim App',
-    'Azan',
-    'Prayer Times',
-    'Minar Clock',
-  ],
+  keywords:
+    'Minar, Islamic Prayer Times, Muslim Prayer App, Salah Times, Adhan Reminder, Qibla Direction, Ramadan Calendar, Islamic Holidays, Mosque Finder, Quran Reading, Dua Collection, Halal Restaurant Locator, Islamic Lifestyle, Muslim Community, Islamic Education',
   authors: [{ name: 'Adhham Safwan', url: 'https://adhham.vercel.app' }],
   creator: 'Adhham Safwan',
   publisher: 'Adhham Safwan',
-  formatDetection: {
-    email: false,
-    telephone: false,
-  },
 };
 
 export default function RootLayout({ children }) {

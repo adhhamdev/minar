@@ -24,6 +24,9 @@ export const metadata = {
   authors: [{ name: 'Adhham Safwan', url: 'https://adhham.vercel.app' }],
   creator: 'Adhham Safwan',
   publisher: 'Adhham Safwan',
+  other: {
+    'google-site-verification': '0R28Xy-oyNhcE2_MB10Jrkoayy5JcPf7mkx89IIMySk',
+  },
 };
 
 export default function RootLayout({ children }) {

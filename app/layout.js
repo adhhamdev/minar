@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
+import { jsonLd } from './jsonld-schema';
 
 const poppins = Poppins({
   weight: '400',
@@ -34,6 +35,11 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <head>
         <Script src='service-worker.js' strategy='beforeInteractive' />
+        <Script
+          id='json-ld'
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${poppins.className} antialiased`}>{children}</body>
     </html>

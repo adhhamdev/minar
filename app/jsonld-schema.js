@@ -1,4 +1,4 @@
-export const jsonLd = {
+export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Minar - Islamic Prayer Times',
@@ -49,4 +49,17 @@ export const jsonLd = {
   availableOnDevice: ['Desktop', 'Mobile', 'Tablet'],
   browserRequirements: 'Requires JavaScript. Requires HTML5.',
   softwareVersion: '0.1.0',
+};
+
+export const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Adhham Safwan',
+  url: 'https://adhham.me',
+  sameAs: [
+    'https://x.com/AdhhamDev',
+    'https://github.com/adhhamdev',
+    'https://www.linkedin.com/in/adhham/',
+  ],
+  jobTitle: 'Software Engineer',
 };
